@@ -1,0 +1,21 @@
+.me {
+    padding: 10px;
+    margin: 10px;
+    color: white;
+    text-align: right;
+    background-color: #0066ff;
+}
+
+.friend {
+    padding: 10px;
+    margin: 10px;
+    text-align: left;
+    background-color: #c2c2c2;
+}
+
+.system {
+    padding: 10px;
+    margin: 10px;
+    background-color: #a6c9ff;
+    text-align: center;
+}

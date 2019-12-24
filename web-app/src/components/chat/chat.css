@@ -1,0 +1,69 @@
+.container {
+    display: flex;
+    position: absolute;
+    flex-direction: row;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+}
+
+.people-online-window {
+    width: 25%;
+    height: 80%;
+    background-color: #4b5466;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.people-online-window p {
+    margin: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+.chat-window {
+    width: 60%;
+    height: 80%;
+    background-color: #535c6e;
+    display: flex;
+    flex-direction: column;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.chat {
+    height: 90%;
+}
+
+.message-field {
+    display: flex;
+    flex-direction: row;
+    height: 10%;
+}
+
+.message-field input[type="text"] {
+    margin-left: 20px;
+    border: 0px;
+    border-radius: 5px;
+    height: 70%;
+    width: 75%;
+    background: #ededed;
+}
+
+.message-field button {
+    margin-right: 20px;
+    margin-left: 25px;
+    height: 70%;
+    background-color: #4caf50;
+    padding: 12px 20px;
+    border: 0px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.message-field button:hover {
+    background-color: #2f9232;
+}
