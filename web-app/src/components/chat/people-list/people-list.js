@@ -3,7 +3,7 @@ import './people-list.css';
 
 const PeopleList = (props) => {
     return (
-        <ul>
+        <ul className="people-list">
             {props.onlinePeople.map(item => <li key={item}>{item}</li>)}
         </ul>
     );

@@ -4,21 +4,28 @@ import './message-list.css';
 const MessageList = (props) => {
     const { messages } = props;
 
-    return messages.map((message, index) => {
+    const messageItems = messages.map((message, index) => {
         let messageClass = '';
 
         switch (message.type) {
             case 'ME': messageClass = 'me'; break;
             case 'FRIEND': messageClass = 'friend'; break;
             case 'SYSTEM': messageClass = 'system'; break;
+            default: messageClass = 'system';
         }
 
         return (
-            <div key={index} className={messageClass}>
-                {message.message}
-            </div>
+            <li key={index} className={messageClass}>
+                <span>{message.message}</span>
+            </li>
         );
     });
+
+    return (
+        <ul className="message-list">
+            {messageItems}
+        </ul>
+    );
 }
 
 export default MessageList;

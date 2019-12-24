@@ -8,6 +8,7 @@ export default class Chat extends React.Component {
     constructor(props) {
         super(props);
 
+        // NOTE: This is data only for testing
         this.state = {
             onlinePeople: ['pera', 'zika', 'mika', 'fika'],
             messages: [

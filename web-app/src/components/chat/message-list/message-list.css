@@ -1,21 +1,37 @@
+.message-list {
+    list-style: none; 
+    padding: 0px;
+}
+
 .me {
     padding: 10px;
-    margin: 10px;
-    color: white;
     text-align: right;
-    background-color: #0066ff;
 }
 
 .friend {
     padding: 10px;
-    margin: 10px;
     text-align: left;
-    background-color: #c2c2c2;
 }
 
 .system {
     padding: 10px;
-    margin: 10px;
-    background-color: #a6c9ff;
     text-align: center;
+}
+
+li.me span {
+    background-color: #0066ff;
+    color: white;
+    padding: 7px;
+    border-radius: 15px;
+}
+
+li.friend span {
+    background-color: #c2c2c2;
+    padding: 7px;
+    border-radius: 15px;
+}
+
+li.system span {
+    font-style: italic;
+    color: #c2c2c2;
 }
