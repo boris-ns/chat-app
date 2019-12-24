@@ -5,15 +5,22 @@ const socket = openSocket(API_SOCKET);
 
 function connectToChat(username, chatRoomName, chatRoomPassword, cb) {
     // Subscribe on event that server emits as a result
-    socket.on('success', message => cb(null, message));
+    socket.on('new-user', message => cb(null, message));
 
     // Emit (send request to the server)
     socket.emit('new-user', username, chatRoomName, chatRoomPassword);
 }
 
-function sendMessage(usernameFrom, message, cb) {
-    socket.on('new-message-received', message => cb(null, message));
-    socket.emit('new-message', usernameFrom, message);
+function sendMessage(usernameFrom, message) {
+    socket.emit('send-new-message', usernameFrom, message);
 }
 
-export { connectToChat, sendMessage };
+function newUserArrived(cb) {
+    socket.on('new-user', username => cb(null, username));
+}
+
+function newMessageArrived(cb) {
+    socket.on('new-message', (usernameFrom, message) => cb(null, usernameFrom, message));
+}
+
+export { connectToChat, sendMessage, newUserArrived, newMessageArrived };

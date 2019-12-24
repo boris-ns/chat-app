@@ -58,7 +58,7 @@ export default class Home extends React.Component {
                     onChange={this.onChangeChatRoomPassword} 
                 />
 
-                <button className="enterButton" onClick={this.onClickEnter}>Send</button>
+                <button className="enterButton" onClick={this.onClickEnter}>Enter</button>
             </div>
         );
     }

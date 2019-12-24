@@ -1,4 +1,4 @@
-.container {
+.chat-container {
     display: flex;
     position: absolute;
     flex-direction: row;

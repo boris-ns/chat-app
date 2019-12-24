@@ -14,12 +14,12 @@ io.on('connection', client => {
         // NOTE: for now we will ignore chat rooms
 
         console.log("[INFO-Socket] User with username:", username, "connected to the chat");
-        io.emit('success', 'You are connected');
+        io.emit('new-user', username);
     });
 
-    client.on('new-message', (fromUsername, message) => {
+    client.on('send-new-message', (fromUsername, message) => {
         console.log("Primeljna poruka od", fromUsername, message);
-        client.emit('new-message-received', 'Primio sam poruku')
+        client.broadcast.emit('new-message', fromUsername, message);
     });
 });
 
