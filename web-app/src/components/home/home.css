@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    margin-top: 100px;
+    color: white;
+}
+
+.input-field {
+    width: 200px;
+    padding: 12px 20px;
+    border: 0px;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.enterButton {
+    margin: 10px;
+    background-color: #4caf50;
+    width: 200px;
+    padding: 12px 20px;
+    border: 0px;
+    border-radius: 5px;
+}
+
+.enterButton:hover {
+    cursor: pointer;
+    background-color: #2f9232;
+}
