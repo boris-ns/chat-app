@@ -16,7 +16,10 @@ const MessageList = (props) => {
 
         return (
             <li key={index} className={messageClass}>
-                <div className="usernameFrom">{message.usernameFrom}</div>
+                {
+                    message.usernameFrom ? 
+                        <div className="usernameFrom">{message.usernameFrom}</div> : <div></div>
+                }
                 <span>{message.message}</span>
             </li>
         );

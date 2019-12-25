@@ -12,6 +12,7 @@ export default class Chat extends React.Component {
 
         this.state = {
             message: '',
+            lastSender: '',
             onlinePeople: [],
             messages: []
         };
@@ -31,16 +32,19 @@ export default class Chat extends React.Component {
         });
 
         newMessageArrived((err, usernameFrom, message) => {
-            console.log("STigla poruka od ", usernameFrom);
             const newMessage = {
                 message: message,
-                type: MSG_FROM_FRIEND,
-                usernameFrom: usernameFrom
+                type: MSG_FROM_FRIEND
             };
+
+            if (this.state.lastSender !== usernameFrom) {
+                newMessage.usernameFrom = usernameFrom;
+            }
 
             this.setState(prevState => {
                 return {
-                    messages: [...prevState.messages, newMessage]
+                    messages: [...prevState.messages, newMessage],
+                    lastSender: usernameFrom
                 };
             });
         });
