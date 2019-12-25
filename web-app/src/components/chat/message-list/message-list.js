@@ -16,6 +16,7 @@ const MessageList = (props) => {
 
         return (
             <li key={index} className={messageClass}>
+                <div className="usernameFrom">{message.usernameFrom}</div>
                 <span>{message.message}</span>
             </li>
         );

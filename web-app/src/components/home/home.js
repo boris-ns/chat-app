@@ -31,13 +31,14 @@ export default class Home extends React.Component {
 
         connectToChat(username, chatRoomName, chatRoomPassword, (err, message) => {
             console.log(message);
+            localStorage.setItem('username', username);
             this.props.gotoChatPage();
         });
     }
 
     render() {
         return (
-            <div className="container">
+            <div className="home-container">
                 <h1 className="title">Welcome to chat-app</h1>
 
                 <input type="text" 

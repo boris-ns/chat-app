@@ -2,6 +2,7 @@ import React from 'react';
 import PeopleList from './people-list/people-list';
 import MessageList from './message-list/message-list';
 import { newUserArrived, newMessageArrived, sendMessage } from '../../utils/config/socket';
+import { MSG_FROM_FRIEND, MSG_FROM_SYSTEM, MSG_FROM_ME } from '../../utils/consts/message-types';
 import './chat.css';
 
 export default class Chat extends React.Component {
@@ -9,30 +10,16 @@ export default class Chat extends React.Component {
     constructor(props) {
         super(props);
 
-        // NOTE: This is data only for testing
         this.state = {
             message: '',
-            onlinePeople: ['pera', 'zika', 'mika', 'fika'],
-            messages: [
-                {
-                    message: 'This is stranger message',
-                    type: 'FRIEND'
-                },
-                {
-                    message: 'This is message from me',
-                    type: 'ME'
-                },
-                {
-                    message: 'This is system message',
-                    type: 'SYSTEM'
-                }
-            ],
+            onlinePeople: [],
+            messages: []
         };
 
         newUserArrived((err, username) => {
             const newMessage = {
-                message: `User '${username}' has now joined the chat. Say hi`,
-                type: 'SYSTEM'
+                message: `User '${username}' has now joined the chat. Say hi!`,
+                type: MSG_FROM_SYSTEM
             };
 
             this.setState(prevState => { 
@@ -44,9 +31,11 @@ export default class Chat extends React.Component {
         });
 
         newMessageArrived((err, usernameFrom, message) => {
+            console.log("STigla poruka od ", usernameFrom);
             const newMessage = {
                 message: message,
-                type: 'FRIEND'
+                type: MSG_FROM_FRIEND,
+                usernameFrom: usernameFrom
             };
 
             this.setState(prevState => {
@@ -62,12 +51,12 @@ export default class Chat extends React.Component {
     }
 
     onClickSend = () => {
-        // TODO: Implement later, who is sending this message
-        sendMessage('PERO', this.state.message);
+        const username = localStorage.getItem('username');
+        sendMessage(username, this.state.message);
 
         const newMessage = {
             message: this.state.message,
-            type: 'ME'
+            type: MSG_FROM_ME
         };
 
         this.setState(prevState => {
@@ -81,7 +70,7 @@ export default class Chat extends React.Component {
 
     render() {
         return (
-            <div className="chat-container">
+            <div className="container">
                 <div className="people-online-window">
                     <p>People online:</p>
                     <PeopleList onlinePeople={this.state.onlinePeople} />
