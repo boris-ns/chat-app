@@ -66,7 +66,8 @@ export default class Chat extends React.Component {
         this.setState(prevState => {
             return {
                 messages: [...prevState.messages, newMessage],
-                message: ''
+                message: '',
+                lastSender: username
             };
         });
     }
