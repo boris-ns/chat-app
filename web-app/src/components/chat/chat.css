@@ -38,6 +38,7 @@
 
 .chat {
     height: 90%;
+    overflow-y: scroll;
 }
 
 .message-field {

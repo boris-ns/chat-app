@@ -69,7 +69,12 @@ export default class Chat extends React.Component {
                 message: ''
             };
         });
+    }
 
+    onEnterKeyPress = (event) => {
+        if (event.key === 'Enter' && this.state.message !== '') {
+            this.onClickSend();
+        }
     }
 
     render() {
@@ -89,10 +94,16 @@ export default class Chat extends React.Component {
                         <input type="text" 
                             value={this.state.message}
                             placeholder="Enter a message"
-                            onChange={this.onChangeMessage}    
+                            onChange={this.onChangeMessage}
+                            onKeyPress={this.onEnterKeyPress}
                         />
 
-                        <button onClick={this.onClickSend}>Send</button>
+                        <button 
+                            onClick={this.onClickSend}
+                            disabled={this.state.message === ''}
+                        >
+                            Send
+                        </button>
                     </div>
                 </div>
             </div>

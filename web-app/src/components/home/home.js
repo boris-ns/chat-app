@@ -36,6 +36,12 @@ export default class Home extends React.Component {
         });
     }
 
+    onEnterKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            this.onClickEnter();
+        }
+    }
+
     render() {
         return (
             <div className="home-container">
@@ -45,21 +51,29 @@ export default class Home extends React.Component {
                     className="input-field" 
                     placeholder="Username" 
                     onChange={this.onChangeUsername} 
+                    onKeyPress={this.onEnterKeyPress}
                 />
 
                 <input type="text" 
                     className="input-field" 
                     placeholder="Chat room name" 
                     onChange={this.onChangeChatRoomName} 
+                    disabled={true} // TODO: Remove when you implement chat rooms
                 />
 
                 <input type="password" 
                     className="input-field" 
                     placeholder="Chat room password (if exists)" 
                     onChange={this.onChangeChatRoomPassword} 
+                    disabled={true} // TODO: Remove when you implement chat rooms
                 />
 
-                <button className="enterButton" onClick={this.onClickEnter}>Enter</button>
+                <button className="enterButton" 
+                    onClick={this.onClickEnter}
+                    disabled={this.state.username === ''}    
+                >
+                        Enter
+                </button>
             </div>
         );
     }
